@@ -1,4 +1,4 @@
-# Problem name: 
+# Problem name: CCC '15 J2 - Happy or Sad
 # Code: ccc15j2
 # Link: https://dmoj.ca/problem/ccc15j2
 
