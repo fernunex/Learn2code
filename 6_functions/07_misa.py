@@ -4,7 +4,7 @@
 
 def count_hand_shakes(array_seats: list[list[bool]], R: int,S: int) -> int:
     hand_shakes = 0
-    
+
     for i in range(1, R + 1):
         for j in range(1, S + 1):
             current_seat = array_seats[i][j]
@@ -17,8 +17,8 @@ def count_hand_shakes(array_seats: list[list[bool]], R: int,S: int) -> int:
                                     if current_seat and array_seats[k][l]:
                                         hand_shakes += 1
                 hand_shakes -= 1
-                array_seats[i][j] = False
-    return hand_shakes
+                # array_seats[i][j] = False
+    return hand_shakes // 2
             
 
 # Read input
@@ -50,13 +50,13 @@ for i in range(R + 2):
 if '.' in raw_seats:
     # Search the seat that gives the most hand shakes
     maximum_hand_shakes = 0
+    array_cp = [x[:] for x in array_seats]
     for i in range(1, R + 1):
         for j in range(1, S + 1):
             if array_seats[i][j] == False:
-                array_cp = [x[:] for x in array_seats]
                 array_cp[i][j] = True
                 hand_shakes = count_hand_shakes(array_cp, R, S)
-
+                array_cp[i][j] = False
                 if hand_shakes > maximum_hand_shakes:
                     maximum_hand_shakes = hand_shakes
     print(maximum_hand_shakes)
