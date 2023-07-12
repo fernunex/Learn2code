@@ -2,6 +2,10 @@
 # Link: http://usaco.org/index.php?page=viewproblem2&cpid=963
 
 def read_records(input_file):
+    """
+    input_file is a open file
+    return a list of the records of cows
+    """
     cows = []
     for record in input_file:
         line = record.split()
@@ -11,15 +15,25 @@ def read_records(input_file):
     return cows
 
 def count_consistent_cows(cows_records):
+    """
+    cows_records is a matrix, has k gymnastic-records for n cows
+    count how many cow are consistent, for a consistent pair of cows
+    one need to be always better than the other in all records
+
+    return how many consistent pair of cows are
+    """
     consistent_cows = 0
     for i in range(1, len(cow_records[0]) + 1):
         for k in range(1, len(cow_records[0]) + 1):
             if i != k:
                 consistent = True
-                for record in cows_records:
+                l = 0
+                while l < len(cows_records) and consistent:
+                    record = cows_records[l]
                     if  k not in record[record.index(i) + 1:]:
                         consistent = False
-                        break
+                    else:
+                        l += 1
                 if consistent:
                     consistent_cows += 1
     return consistent_cows
