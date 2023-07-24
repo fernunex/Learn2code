@@ -26,8 +26,9 @@
 # print(ciphertext_decoded)
 
 # Second version
-# I think there is something wrong in the test case
+# I was missing something hahha
 
+complete_chars = set("ABCDEFGHIJKLMNOPQRSTUVWXYZ ")
 plaintext = input()
 ciphertext = input()
 ciphertext_to_decode = input()
@@ -37,6 +38,9 @@ cipher_decoded = {}
 for i in range(len(plaintext)):
     cipher_decoded[ciphertext[i]] = plaintext[i]
 
+if len(cipher_decoded) == 26: # Just is missing one word, we can predict
+    cipher_decoded[(complete_chars - (cipher_decoded.keys())).pop()] = (complete_chars - set(cipher_decoded.values())).pop()
+
 plain_decoded = ''
 for i in range(len(ciphertext_to_decode)):
     if ciphertext_to_decode[i] in cipher_decoded:
@@ -44,16 +48,22 @@ for i in range(len(ciphertext_to_decode)):
     else:
         plain_decoded += '.'
 
-if plain_decoded == 'THE DO. AND THE FOX':
-    plain_decoded = 'THE DOG AND THE FOX'
-
 print(plain_decoded)
-# print(f"plain text:{plaintext}")
-# print(f"ciphertext:{ciphertext}")
-# print(f"to_decode:{ciphertext_to_decode}")
 
-# if plaintext == 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DO':
-#     plaintext = 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG'
+# Third verions form other developer hellobye65536
+# pt = input()
+# cpt = input()
+# ct = input()
+
+# cs = set("ABCDEFGHIJKLMNOPQRSTUVWXYZ ")
+
+# cd = {}
+# for p, c in zip(pt, cpt):
+#     cd[c] = p
+
+# if len(cd) == 26:
+
+# print(''.join(map(lambda k: cd.get(k, '.'), ct)))
 
 # TMFPNOQLRPHYK IPUKVPGOEADPKBFYPTMFPJCZXPWK
 # THE QUICK BROWN FOX JUMPS OVER THE LAZY DO
