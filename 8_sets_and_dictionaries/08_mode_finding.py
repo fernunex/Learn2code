@@ -21,3 +21,18 @@ for i in range(len(modes)):
     modes[i] = str(modes[i])
 
 print(' '.join(modes))
+
+
+
+# Check the FASTEST SOLUTION by Subway_Man
+# from collections import Counter
+# f = input()
+# g = Counter(input().split()).most_common()
+# mode = g[0][1]
+# yes = []
+# for e in g:
+    # if e[1] != mode:
+        # break
+    # yes.append(e[0])
+
+# print(*sorted(yes, key=int))
