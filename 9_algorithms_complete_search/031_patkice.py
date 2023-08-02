@@ -1,4 +1,4 @@
-# Problem name: 
+# Problem name: COCI '20 Contest 1 #1 Patkice
 # Code: coci20c1p1
 # Link: https://dmoj.ca/problem/coci20c1p1
 
