@@ -2,47 +2,28 @@
 # Code: ecoo16r1p2
 # Link: https://dmoj.ca/problem/ecoo16r1p2
 
-def generate_combinations(num1, num2, num3):
-    """
-    num1, num2 and num3 are the posible oucomes form the spinner.
-
-    Return all the combination of multiplication and sum posibles between
-    those numbers.
-    """
-    return {
-            ((num1 + num2) + num3),
-            ((num1 + num2) * num3),
-            ((num1 * num2) + num3),
-            ((num1 * num2) * num3)
-    }
-
-
 # Main
+# Reimplement and experimentation idea: https://dmoj.ca/user/DREU007
 import sys
 input = sys.stdin.readline
 
 for _ in range(10):
     N = input()
-    numbers = set(map(lambda x: int(x), input().split()))
-    targets = list(map(lambda x: int(x), input().split()))
+    numbers = set(map(int, input().split()))
+    targets = list(map(int, input().split()))
 
-    upper_limit = max(targets)
-    lower_limit = min(targets)
 
     posibilities = set()
     for num1 in numbers:
         for num2 in numbers:
-            for num3 in numbers:
-                combination = generate_combinations(num1, num2, num3)
-                posibilities.update(set(filter(
-                    lambda x: x <= upper_limit and x >= lower_limit,combination
-                    )))
+            posibilities.update({num1 + num2, num1 * num2})
 
-    output = ''
     for target in targets:
-        if target in posibilities:
-            output += 'T'
-        else:
-            output += 'F'
+        found = 'F'
+        for num in numbers:
+            if (target// num in posibilities and target % num == 0) or (target - num) in posibilities:
+                found = 'T'
 
-    print(output)
+        print(found, sep='', end='')
+        
+    print()
