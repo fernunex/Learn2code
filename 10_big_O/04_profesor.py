@@ -4,6 +4,7 @@
 
 # Main
 # Fast input/output
+
 import sys
 input = sys.stdin.readline
 
@@ -56,3 +57,5 @@ for i in range(4):
     if answers[i][0] != answers[i + 1][0]:
         print(f"{answers[i][0]} {answers[i][1]}")
         break
+
+# Complexity O(n)
